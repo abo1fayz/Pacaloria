@@ -50,7 +50,7 @@ header i {
 
 /* منطقة الفلاتر والبحث */
 #filters {
-  background-color: white;
+  background-color: red;
   padding: 1.5rem;
   margin: 1rem auto;
   border-radius: 8px;
