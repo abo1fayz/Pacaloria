@@ -16,8 +16,18 @@
     <section id="filters">
       <div class="filter-buttons">
         <button class="filter-btn active" onclick="setCategory('all')">الكل</button>
-        <button class="filter-btn" onclick="setCategory('علمي')">علمي</button>
         <button class="filter-btn" onclick="setCategory('أدبي')">أدبي</button>
+        <div class="dropdown">
+          <button class="filter-btn dropbtn" onclick="toggleDropdown()">
+            علمي <i class="fas fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" onclick="setSubCategory('علمي', 'علوم تجريبية')">علوم تجريبية</a>
+            <a href="#" onclick="setSubCategory('علمي', 'رياضيات')">رياضيات</a>
+            <a href="#" onclick="setSubCategory('علمي', 'تقني رياضي')">تقني رياضي</a>
+            <a href="#" onclick="setCategory('علمي')">كل التخصصات العلمية</a>
+          </div>
+        </div>
       </div>
       <div class="search-container">
         <input type="text" id="search-input" oninput="applyFilters()" placeholder="ابحث عن كتاب...">
