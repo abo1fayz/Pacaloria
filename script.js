@@ -1,75 +1,84 @@
 const books = [
   {
     title: "الرياضيات - بكالوريا علمي",
-    file: "pdfs/math.pdf",
-    image: "images/math.jpg",
+    file: "math.pdf",
+    image: "math.jpg",
     category: "علمي"
   },
   {
     title: "الفيزياء - بكالوريا علمي",
-    file: "pdfs/physics.pdf",
-    image: "images/physics.jpg",
+    file: "physics.pdf",
+    image: "physics.jpg",
     category: "علمي"
   },
   {
     title: "التاريخ - بكالوريا أدبي",
-    file: "pdfs/history.pdf",
-    image: "images/history.jpg",
+    file: "history.pdf",
+    image: "history.jpg",
     category: "أدبي"
   },
   {
     title: "مرجع القواعد النحوية",
-    file: "pdfs/grammar.pdf",
-    image: "images/grammar.jpg",
+    file: "grammar.pdf",
+    image: "grammar.jpg",
     category: "أدبي"
   }
 ];
 
+let selectedCategory = "all";
 const bookList = document.getElementById("book-list");
-const viewer = document.getElementById("viewer");
-const pdfFrame = document.getElementById("pdf-frame");
-const viewerTitle = document.getElementById("viewer-title");
-const downloadBtn = document.getElementById("download-btn");
 
 function displayBooks(filteredBooks) {
   bookList.innerHTML = "";
+  
+  if (filteredBooks.length === 0) {
+    bookList.innerHTML = '<p class="no-results">لا توجد نتائج مطابقة للبحث</p>';
+    return;
+  }
+  
   filteredBooks.forEach(book => {
     const bookDiv = document.createElement("div");
     bookDiv.className = "book";
-
     bookDiv.innerHTML = `
-      <img src="${book.image}" alt="${book.title}" class="book-image">
+      <img src="images/${book.image}" alt="${book.title}" class="book-image">
       <h3>${book.title}</h3>
-      <button onclick="openViewer('${book.title}', '${book.file}')">فتح الكتاب</button>
+      <a href="books/${book.file}" download="${book.title}">
+        <button><i class="fas fa-download"></i> تحميل الكتاب</button>
+      </a>
     `;
-
     bookList.appendChild(bookDiv);
   });
 }
 
-function filterBooks(category) {
-  if (category === "all") {
-    displayBooks(books);
-  } else {
-    const filtered = books.filter(book => book.category === category);
-    displayBooks(filtered);
-  }
+function setCategory(category) {
+  selectedCategory = category;
+  
+  // تحديث الأزرار النشطة
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.textContent === (category === 'all' ? 'الكل' : category)) {
+      btn.classList.add('active');
+    }
+  });
+  
+  applyFilters();
 }
 
-function openViewer(title, file) {
-  viewerTitle.textContent = title;
-  pdfFrame.src = file;
-  downloadBtn.href = file;
-  viewer.classList.remove("hidden");
-  window.scrollTo({ top: viewer.offsetTop, behavior: "smooth" });
+function applyFilters() {
+  const query = document.getElementById("search-input").value.toLowerCase();
+  
+  const filtered = books.filter(book =>
+    (selectedCategory === "all" || book.category === selectedCategory) &&
+    book.title.toLowerCase().includes(query)
+  );
+  
+  displayBooks(filtered);
 }
 
-function closeViewer() {
-  viewer.classList.add("hidden");
-  pdfFrame.src = "";
-}
-
-// عرض الكل عند التحميل
+// تهيئة الصفحة عند التحميل
 window.onload = () => {
-  displayBooks(books);
+  applyFilters();
+  
+  // يمكنك إضافة المزيد من الكتب هنا إذا لزم الأمر
+  // أو جلبها من قاعدة بيانات أو API
 };
