@@ -2,7 +2,7 @@ const books = [
   {
     title: "الرياضيات - بكالوريا علمي",
     file: "math.pdf",
-    image: "math.jpg",
+    image: "math.pdf",
     category: "علمي"
   },
   {
