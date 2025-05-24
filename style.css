@@ -1,11 +1,17 @@
-/* الأساسيات */
+/* الأساسيات والمتغيرات */
 :root {
   --primary-color: #3498db;
+  --primary-dark: #2980b9;
   --secondary-color: #2c3e50;
   --accent-color: #e74c3c;
   --light-color: #ecf0f1;
   --dark-color: #2c3e50;
+  --gray-light: #f5f5f5;
+  --gray-medium: #ddd;
+  --gray-dark: #777;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
 * {
@@ -16,8 +22,8 @@
 }
 
 body {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: var(--gray-light);
+  color: var(--dark-color);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -42,7 +48,7 @@ header i {
   margin-left: 10px;
 }
 
-/* الفلاتر والبحث */
+/* منطقة الفلاتر والبحث */
 #filters {
   background-color: white;
   padding: 1.5rem;
@@ -69,7 +75,10 @@ header i {
   color: var(--dark-color);
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .filter-btn:hover {
@@ -82,6 +91,53 @@ header i {
   color: white;
 }
 
+/* القائمة المنسدلة */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  padding: 0.5rem 1.5rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: var(--shadow-hover);
+  z-index: 10;
+  border-radius: 8px;
+  right: 0;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: var(--dark-color);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+  transition: var(--transition);
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.dropdown-content a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.show {
+  display: block;
+}
+
+/* شريط البحث */
 .search-container {
   position: relative;
   max-width: 500px;
@@ -91,10 +147,10 @@ header i {
 #search-input {
   width: 100%;
   padding: 0.8rem 1rem 0.8rem 2.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-medium);
   border-radius: 50px;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 #search-input:focus {
@@ -108,7 +164,45 @@ header i {
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #777;
+  color: var(--gray-dark);
+}
+
+/* شريط التخصص الفرعي */
+.subcategory-bar {
+  background-color: var(--light-color);
+  padding: 0.75rem 1.5rem;
+  margin: 1rem auto;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 1200px;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.subcategory-bar span {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.clear-sub {
+  background: none;
+  border: none;
+  color: var(--gray-dark);
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  transition: var(--transition);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.clear-sub:hover {
+  color: var(--accent-color);
+  background-color: rgba(231, 76, 60, 0.1);
 }
 
 /* قائمة الكتب */
@@ -127,34 +221,45 @@ header i {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition);
   display: flex;
   flex-direction: column;
 }
 
 .book:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hover);
 }
 
 .book-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--gray-light);
   background-color: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #777;
+  color: var(--gray-dark);
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 .book h3 {
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem;
   font-size: 1.1rem;
   color: var(--dark-color);
   text-align: center;
   flex-grow: 1;
+}
+
+.book-sub {
+  color: var(--gray-dark);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .book a {
@@ -169,12 +274,88 @@ header i {
   border: none;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .book button:hover {
-  background-color: #2980b9;
+  background-color: var(--primary-dark);
 }
 
+.book button i {
+  font-size: 0.9rem;
+}
+
+/* رسالة عدم وجود نتائج */
 .no-results {
-  text-align: center
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+  color: var(--gray-dark);
+  font-size: 1.2rem;
+}
+
+/* الفوتر */
+footer {
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+/* التجاوب مع أحجام الشاشات */
+@media (max-width: 768px) {
+  .books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .filter-buttons {
+    gap: 0.75rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .filter-btn, .dropbtn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .books-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .book-image {
+    height: 180px;
+  }
+  
+  .subcategory-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+}
