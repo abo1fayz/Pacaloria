@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>مراجع وكتب البكالوريا</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مكتبة البكالوريا</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
-    <h1>مراجع وكتب البكالوريا</h1>
-    <div class="filter-buttons">
-      <button onclick="filterBooks('all')">الكل</button>
-      <button onclick="filterBooks('علمي')">علمي</button>
-      <button onclick="filterBooks('أدبي')">أدبي</button>
-    </div>
+    <h1><i class="fas fa-book-open"></i> مكتبة كتب البكالوريا</h1>
   </header>
 
-  <main id="book-list">
-    <!-- ستظهر الكتب هنا -->
+  <main>
+    <section id="filters">
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="setCategory('all')">الكل</button>
+        <button class="filter-btn" onclick="setCategory('علمي')">علمي</button>
+        <button class="filter-btn" onclick="setCategory('أدبي')">أدبي</button>
+      </div>
+      <div class="search-container">
+        <input type="text" id="search-input" oninput="applyFilters()" placeholder="ابحث عن كتاب...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </section>
+
+    <section id="book-list" class="books-grid"></section>
   </main>
 
-  <section id="viewer" class="hidden">
-    <h2 id="viewer-title"></h2>
-    <iframe id="pdf-frame" src="" frameborder="0"></iframe>
-    <a id="download-btn" href="" download>تحميل الكتاب</a>
-    <button onclick="closeViewer()">إغلاق</button>
-  </section>
+  <footer>
+    <p>جميع الحقوق محفوظة &copy; مكتبة البكالوريا 2023</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
