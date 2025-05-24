@@ -9,7 +9,7 @@ const books = [
   {
     title: "الفيزياء - بكالوريا علمي",
     file: "physics.pdf",
-    image: "physics.jpg",
+    image: "250187.png",
     category: "علمي",
     subcategory: "علوم تجريبية"
   },
