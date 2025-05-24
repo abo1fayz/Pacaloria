@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>مراجع وكتب البكالوريا</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>مراجع وكتب البكالوريا</h1>
+    <div class="filter-buttons">
+      <button onclick="setCategory('all')">الكل</button>
+      <button onclick="setCategory('علمي')">علمي</button>
+      <button onclick="setCategory('أدبي')">أدبي</button>
+    </div>
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="ابحث عن كتاب..." oninput="applyFilters()">
+    </div>
+  </header>
+
+  <main id="book-list">
+    <!-- ستظهر الكتب هنا -->
+  </main>
+
+  <section id="viewer" class="hidden">
+    <h2 id="viewer-title"></h2>
+    <iframe id="pdf-frame" src="" frameborder="0"></iframe>
+    <a id="download-btn" href="" download>تحميل الكتاب</a>
+    <button onclick="closeViewer()">إغلاق</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+        </html>
