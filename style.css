@@ -1,0 +1,125 @@
+body {
+  font-family: 'Arial', sans-serif;
+  direction: rtl;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #00695c;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.filter-buttons {
+  margin-top: 10px;
+}
+
+.filter-buttons button {
+  background-color: white;
+  color: #00695c;
+  border: none;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-box {
+  margin-top: 15px;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.book {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.book:hover {
+  transform: scale(1.03);
+}
+
+.book img.book-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.book h3 {
+  margin: 10px 0;
+}
+
+.book button {
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book button:hover {
+  background-color: #004d40;
+}
+
+#viewer {
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #bbb;
+  text-align: center;
+}
+
+#viewer iframe {
+  width: 100%;
+  height: 600px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
+
+#download-btn {
+  display: inline-block;
+  margin: 15px;
+  padding: 10px 20px;
+  background-color: #00695c;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#viewer button {
+  padding: 10px 15px;
+  background-color: #b71c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
