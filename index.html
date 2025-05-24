@@ -10,12 +10,9 @@
   <header>
     <h1>مراجع وكتب البكالوريا</h1>
     <div class="filter-buttons">
-      <button onclick="setCategory('all')">الكل</button>
-      <button onclick="setCategory('علمي')">علمي</button>
-      <button onclick="setCategory('أدبي')">أدبي</button>
-    </div>
-    <div class="search-box">
-      <input type="text" id="search-input" placeholder="ابحث عن كتاب..." oninput="applyFilters()">
+      <button onclick="filterBooks('all')">الكل</button>
+      <button onclick="filterBooks('علمي')">علمي</button>
+      <button onclick="filterBooks('أدبي')">أدبي</button>
     </div>
   </header>
 
@@ -32,4 +29,4 @@
 
   <script src="script.js"></script>
 </body>
-        </html>
+</html>
