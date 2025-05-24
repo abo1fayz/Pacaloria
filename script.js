@@ -16,7 +16,7 @@ const books = [
   {
     title: "الكيمياء - علوم تجريبية",
     file: "chemistry.pdf",
-    image: "chemistry.jpg",
+    image: "OIP.jpg",
     category: "علمي",
     subcategory: "علوم تجريبية"
   },
