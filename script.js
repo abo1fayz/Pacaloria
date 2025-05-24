@@ -39,10 +39,16 @@ function displayBooks(filteredBooks) {
   filteredBooks.forEach(book => {
     const bookDiv = document.createElement("div");
     bookDiv.className = "book";
+    
+    // صورة افتراضية إذا لم توجد صورة
+    const imageContent = book.image ? 
+      `<img src="${book.image}" alt="${book.title}" class="book-image">` :
+      `<div class="book-image">${book.title}</div>`;
+    
     bookDiv.innerHTML = `
-      <img src="images/${book.image}" alt="${book.title}" class="book-image">
+      ${imageContent}
       <h3>${book.title}</h3>
-      <a href="books/${book.file}" download="${book.title}">
+      <a href="${book.file}" download="${book.title}">
         <button><i class="fas fa-download"></i> تحميل الكتاب</button>
       </a>
     `;
@@ -78,7 +84,4 @@ function applyFilters() {
 // تهيئة الصفحة عند التحميل
 window.onload = () => {
   applyFilters();
-  
-  // يمكنك إضافة المزيد من الكتب هنا إذا لزم الأمر
-  // أو جلبها من قاعدة بيانات أو API
 };
