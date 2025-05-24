@@ -142,6 +142,11 @@ header i {
   height: 200px;
   object-fit: cover;
   border-bottom: 1px solid #eee;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
 }
 
 .book h3 {
@@ -171,37 +176,5 @@ header i {
   background-color: #2980b9;
 }
 
-/* الفوتر */
-footer {
-  background-color: var(--secondary-color);
-  color: white;
-  text-align: center;
-  padding: 1.5rem;
-  margin-top: auto;
-}
-
-/* التجاوب */
-@media (max-width: 768px) {
-  .books-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-  
-  header h1 {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .filter-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .filter-btn {
-    width: 100%;
-  }
-  
-  .books-grid {
-    grid-template-columns: 1fr;
-  }
-}
+.no-results {
+  text-align: center
