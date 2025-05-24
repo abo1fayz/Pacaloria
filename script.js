@@ -1,33 +1,35 @@
 const books = [
   {
     title: "الرياضيات - بكالوريا علمي",
-    file: "math.pdf",
-    image: "math.jpg",
+    file: "pdfs/math.pdf",
+    image: "images/math.jpg",
     category: "علمي"
   },
   {
     title: "الفيزياء - بكالوريا علمي",
-    file: "physics.pdf",
-    image: "physics.jpg",
+    file: "pdfs/physics.pdf",
+    image: "images/physics.jpg",
     category: "علمي"
   },
   {
     title: "التاريخ - بكالوريا أدبي",
-    file: "history.pdf",
-    image: "history.jpg",
+    file: "pdfs/history.pdf",
+    image: "images/history.jpg",
     category: "أدبي"
   },
   {
     title: "مرجع القواعد النحوية",
-    file: "grammar.pdf",
-    image: "grammar.jpg",
+    file: "pdfs/grammar.pdf",
+    image: "images/grammar.jpg",
     category: "أدبي"
   }
 ];
 
-let selectedCategory = "all";
-
 const bookList = document.getElementById("book-list");
+const viewer = document.getElementById("viewer");
+const pdfFrame = document.getElementById("pdf-frame");
+const viewerTitle = document.getElementById("viewer-title");
+const downloadBtn = document.getElementById("download-btn");
 
 function displayBooks(filteredBooks) {
   bookList.innerHTML = "";
@@ -38,32 +40,36 @@ function displayBooks(filteredBooks) {
     bookDiv.innerHTML = `
       <img src="${book.image}" alt="${book.title}" class="book-image">
       <h3>${book.title}</h3>
-      <a href="${book.file}" target="_blank" rel="noopener noreferrer">
-        <button>فتح الكتاب</button>
-      </a>
+      <button onclick="openViewer('${book.title}', '${book.file}')">فتح الكتاب</button>
     `;
 
     bookList.appendChild(bookDiv);
   });
 }
 
-function setCategory(category) {
-  selectedCategory = category;
-  applyFilters();
+function filterBooks(category) {
+  if (category === "all") {
+    displayBooks(books);
+  } else {
+    const filtered = books.filter(book => book.category === category);
+    displayBooks(filtered);
+  }
 }
 
-function applyFilters() {
-  const query = document.getElementById("search-input").value.toLowerCase();
-
-  let filtered = books.filter(book => {
-    const matchCategory = selectedCategory === "all" || book.category === selectedCategory;
-    const matchSearch = book.title.toLowerCase().includes(query);
-    return matchCategory && matchSearch;
-  });
-
-  displayBooks(filtered);
+function openViewer(title, file) {
+  viewerTitle.textContent = title;
+  pdfFrame.src = file;
+  downloadBtn.href = file;
+  viewer.classList.remove("hidden");
+  window.scrollTo({ top: viewer.offsetTop, behavior: "smooth" });
 }
 
+function closeViewer() {
+  viewer.classList.add("hidden");
+  pdfFrame.src = "";
+}
+
+// عرض الكل عند التحميل
 window.onload = () => {
-  applyFilters();
+  displayBooks(books);
 };
