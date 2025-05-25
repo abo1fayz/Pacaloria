@@ -1,7 +1,7 @@
 const books = [
   {
     title: "الرياضيات - بكالوريا علمي-كامل الهندسة",
-    file: "math.pdf",
+    file: "كامل الهندسة -1.pdf",
     image: "pngtree-math-clipart-png-image_2568772.jpg",
     category: "علمي",
     subcategory: "رياضيات"
