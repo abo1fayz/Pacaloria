@@ -7,6 +7,13 @@ const books = [
     subcategory: "رياضيات"
   },
   {
+    title: "الرياضيات - بكالوريا علمي",
+    file: "math.pdf",
+    image: "pngtree-math-clipart-png-image_2568772.jpg",
+    category: "علمي",
+    subcategory: "رياضيات"
+  },
+  {
     title: "الفيزياء - بكالوريا علمي",
     file: "physics.pdf",
     image: "250187.png",
