@@ -306,6 +306,11 @@ footer {
   padding: 1.5rem;
   margin-top: auto;
 }
+.developer {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #777;
+}
 
 footer p {
   font-size: 0.9rem;
