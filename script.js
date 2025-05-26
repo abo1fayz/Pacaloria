@@ -1,6 +1,6 @@
 const books = [
   {
-    title: "الرياضيات - بكالوريا علمي-كامل الهندسة",
+    title: "كتب - بكالوريا علمي-كامل الهندسة",
     file: "كامل الهندسة -1.pdf",
     image: "WhatsApp Image 2025-05-25 at 3.37.31 PM.jpeg",
     category: "علمي",
